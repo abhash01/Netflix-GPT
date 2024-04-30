@@ -1,4 +1,20 @@
-Features
+# file struture
+
+-components
+-utils
+
+# Login page
+
+- ### create a login page design
+- Header css
+- Routing of app
+- login form
+- sign up form
+- Form Validation
+- useRef Hook
+
+# Features
+
 Login/Sign Up
 Sign In /Sign up Form
 redirect to Browse Page
