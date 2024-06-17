@@ -1,9 +1,22 @@
 import React from "react";
 import logo from "../utils/img/Netflix_Logo_PMS.png";
+import { signOut } from "firebase/auth";
+import { auth } from "../utils/firebase";
+import { useNavigate } from "react-router-dom";
 
 const Header = ({ setIsSignIn, isSignIn }) => {
-  const handleISignIn = () => {
-    setIsSignIn(!isSignIn);
+  const navigate = useNavigate();
+  const handleISignOut = () => {
+    //setIsSignIn(!isSignIn);
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+        navigate("/");
+      })
+      .catch((error) => {
+        // An error happened.
+        navigate("/error");
+      });
   };
 
   return (
@@ -15,10 +28,10 @@ const Header = ({ setIsSignIn, isSignIn }) => {
           <option value="Hindi">Hindi</option>
         </select>
         <button
-          onClick={handleISignIn}
+          onClick={handleISignOut}
           className="bg-red-600 rounded-sm px-4 py-1 text-sm cursor-pointer mx-4"
         >
-          {isSignIn ? "Sign Up" : "Sign In"}
+          Sign out
         </button>
       </div>
     </div>
